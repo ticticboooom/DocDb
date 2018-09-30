@@ -7,18 +7,15 @@
 
 std::string DocumentUtility::rootDirectory = "";
 std::string DocumentUtility::tableDirectory = "";
-
+const std::string DocumentUtility::fileExtension = ".wsdon";
 std::string DocumentUtility::generatePath(std::shared_ptr<structure::DataDocument> doc) {
     std::string path;
-    path += rootDirectory;
-    path += "\\";
-    path += tableDirectory;
-    path += "\\";
-    path += doc->tableIdentifier;
-    path += "\\";
+    path += getSegment(rootDirectory);
+    path += getSegment(tableDirectory);
+    path += getSegment(doc->tableIdentifier);
     CrossFileSystemUtility::createDirectory(path);
     path += doc->primaryIndexValue;
-    path += ".wsdon";
+    path += fileExtension;
     return path;
 }
 
@@ -29,3 +26,18 @@ void DocumentUtility::initialise() {
 
     CrossFileSystemUtility::createDirectory(rootDirectory + "\\" + tableDirectory);
 }
+
+std::string DocumentUtility::generatePath(std::shared_ptr<structure::DocumentMetaData> doc) {
+    std::string path;
+    path += getSegment(rootDirectory);
+    path += getSegment(tableDirectory);
+    path += getSegment(doc->tableIdentifier);
+    path += doc->primaryIndexValue;
+    path+= fileExtension;
+    return path;
+}
+
+std::string DocumentUtility::getSegment(std::string segment) {
+    return segment + "\\";
+}
+

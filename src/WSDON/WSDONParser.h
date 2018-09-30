@@ -7,13 +7,17 @@
 
 
 #include <string>
+#include "Structure/WSDONDocument.h"
 
 class WSDONParser {
 public:
-    static void parse(std::string documentFile);
+    static structure::WSDONDocument parse(std::string str);
 private:
-    static void parseObject(std::string object);
-    static void parseArray(std::string object);
+    static std::shared_ptr<std::map<std::string, structure::WSDONObject>> parseObject(std::shared_ptr<std::vector<std::string>> lines);
+    static std::shared_ptr<std::vector<std::string>> parseArray(std::shared_ptr<std::vector<std::string>> lines);
+    static unsigned int getEndOfObject(std::shared_ptr<std::vector<std::string>> lines, unsigned int currentIndex, unsigned int tabCount);
+    static std::string cleanLine(std::string line);
+    static unsigned int getTabIndex(std::string line);
 };
 
 

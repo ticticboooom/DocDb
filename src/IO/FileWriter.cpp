@@ -10,7 +10,7 @@ FileWriter::FileWriter(std::string path) {
 }
 
 void FileWriter::writeString(std::string str) {
-    stream.seekp(std::ios::end);
+    stream.seekp(std::ios::beg);
     stream.write(str.c_str(), str.length());
 }
 

@@ -21,15 +21,24 @@ int main() {
     (*map)["back"].setBasic("apples back");
     obj.object->setObject(map);
 
-    auto dDoc = std::make_shared<structure::DataDocument>();
-    dDoc->documentData = obj;
+
+    auto dDoc = std::make_shared<structure::DocumentMetaData>();
     dDoc->primaryIndexValue = "0";
-    dDoc->primaryIndexIdentifier = "id";
     dDoc->tableIdentifier = "tings";
 
-    DataDocumentManager docManager = DataDocumentManager();
-    docManager.writeDocument(dDoc);
+    auto document = std::make_shared<structure::DataDocument>();
+    document->primaryIndexValue = "0";
+    document->tableIdentifier = "tings";
+    document->documentData = obj;
+    document->primaryIndexIdentifier = "id";
 
+
+    DataDocumentManager docManager = DataDocumentManager();
+    docManager.writeDocument(document);
+
+    auto data = docManager.readDocument(dDoc);
+    data->primaryIndexValue = "1";
+    docManager.writeDocument(data);
 
     return 0;
 }

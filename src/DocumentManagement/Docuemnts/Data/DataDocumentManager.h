@@ -7,6 +7,7 @@
 
 
 #include "../Structure/DataDocument.h"
+#include "../Structure/DocumentMetaData.h"
 
 class DataDocumentManager {
 public:
@@ -14,6 +15,7 @@ public:
     ~DataDocumentManager();
 
     void writeDocument(std::shared_ptr<structure::DataDocument> document);
+    std::shared_ptr<structure::DataDocument> readDocument(std::shared_ptr<structure::DocumentMetaData> metaData);
 };
 
 

@@ -16,7 +16,6 @@ std::string WSDONSerializer::serializeObject(structure::WSDONObject object, unsi
     for (auto iter = currentObject->begin(); iter != currentObject->end(); ++iter) {
         result += indent;
         result += getTitle(iter->first);
-        result += indent;
         auto objectType = iter->second.getType();
         if (objectType == structure::WSDONObject::WSDONObjectType::Object){
             result += serializeObject(iter->second, objectDepth + 1);
@@ -25,6 +24,7 @@ std::string WSDONSerializer::serializeObject(structure::WSDONObject object, unsi
             result += serializeArray(iter->second.getArray(), objectDepth + 1);
         }
         else if (objectType == structure::WSDONObject::WSDONObjectType::Basic){
+            result += indent;
             result += WSDONUtility::WSDONEscape(iter->second.getBasic());
         }
     }
@@ -32,7 +32,7 @@ std::string WSDONSerializer::serializeObject(structure::WSDONObject object, unsi
 }
 
 std::string WSDONSerializer::getIndentation(unsigned int count) {
-    auto result = std::string();
+    auto result = std::string("");
     result += '\n';
     for (auto i = 0; i < count; i++) {
         result += "\t";
