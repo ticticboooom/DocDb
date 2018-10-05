@@ -12,6 +12,8 @@ class WSDONUtility {
 public:
     static std::string WSDONEscape(std::string str);
     static std::string WSDONUnEscape(std::string str);
+private:
+    static std::string EscapeString(std::string value, std::string matcher, std::string replacement);
 };
 
 

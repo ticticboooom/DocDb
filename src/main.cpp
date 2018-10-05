@@ -5,7 +5,6 @@
 
 int main() {
     DocumentUtility::initialise();
-    std::cout << "Hello, World!" << std::endl;
     auto obj = structure::WSDONDocument();
     obj.object = std::make_shared<structure::WSDONObject>();
     auto map = std::make_shared<structure::WSDONObject::object_type>();

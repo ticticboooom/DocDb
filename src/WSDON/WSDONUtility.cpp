@@ -8,53 +8,49 @@
 std::string WSDONUtility::WSDONEscape(std::string str) {
     auto re = std::regex("(\n)|(\t)");
     std::smatch matchResult;
-    std::regex_search(str, matchResult, re);
-    for (const auto mat : matchResult) {
-        auto matchString = mat.str();
+    if (!std::regex_search(str, matchResult, re)){
+        return str;
+    }
+    for (auto i = 0; i < matchResult.size(); i++) {
+        auto matchString = matchResult[i].str();
         if (matchString == "") {
             continue;
         }
         if (matchString == "\n") {
-            const auto index = str.find_first_of('\n');
-            if (index > str.length() || index < 0) {
-                continue;
-            }
-            str[index] = 'n';
-            str = str.insert(index, "\\");
+            str = EscapeString(str, "\n", "\\n");
         } else if (matchString == "\t") {
-            const auto index = str.find_first_of('\t');
-            if (index > str.length() || index < 0) {
-                continue;
-            }
-            str[index] = 't';
-            str = str.insert(index, "\\");
+            str = EscapeString(str, "\t", "\\t");
         }
     }
     return str;
 }
 
 std::string WSDONUtility::WSDONUnEscape(std::string str) {
-    auto re = std::regex("(\\n)|(\\t)");
+    auto re = std::regex("(\\\\n)|(\\\\t)");
     std::smatch matchResult;
-    std::regex_search(str, matchResult, re);
-    for (const auto mat : matchResult) {
-        auto matchString = mat.str();
+    if (!std::regex_search(str, matchResult, re)){
+        return str;
+    }
+    for (auto i = 0; i < matchResult.size(); i++) {
+        auto matchString = matchResult[i].str();
         if (matchString == "") {
             continue;
         }
         if (matchString == "\\n") {
-            const auto index = str.find_first_of("\\n");
-            if (index > str.length() || index < 0) {
-                continue;
-            }
-            str[index] = '\n';
-        } else if (matchString == "\t") {
-            const auto index = str.find_first_of("\\t");
-            if (index > str.length() || index < 0) {
-                continue;
-            }
-            str[index] = '\t';
+            str = EscapeString(str, "\\n", "\n");
+        } else if (matchString == "\\t") {
+            str = EscapeString(str, "\\t", "\t");
         }
     }
     return str;
+}
+
+std::string WSDONUtility::EscapeString(std::string value, std::string matcher, std::string replacement) {
+    const auto index = value.find_first_of(matcher);
+    if (index >= value.length() || index < 0) {
+        return value;
+    }
+    value.erase(index, matcher.length());
+    value.insert(index, replacement);
+    return value;
 }
