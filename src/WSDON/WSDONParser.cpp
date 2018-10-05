@@ -37,7 +37,8 @@ WSDONParser::parseObject(std::shared_ptr<std::vector<std::string>> lines) {
 
                 if (lastTabIndex < nextLastTabIndex) {
                     auto currentObjectEnd = getEndOfObject(lines, i + 1, nextLastTabIndex);
-                    auto subLines = std::make_shared<std::vector<std::string>>(lines->begin() + i + 1, lines->begin() + currentObjectEnd + 1);
+                    auto subLines = std::make_shared<std::vector<std::string>>(lines->begin() + i + 1,
+                                                                               lines->begin() + currentObjectEnd + 1);
                     (*object)[currentKey].setObject(parseObject(subLines));
                     i = currentObjectEnd;
                     continue;
@@ -100,18 +101,9 @@ unsigned int WSDONParser::getEndOfObject(std::shared_ptr<std::vector<std::string
 }
 
 std::string WSDONParser::cleanLine(std::string line) {
-    auto ind = line.find_last_of('\t');
-    if (ind < line.length() && ind > 0) {
-        line = line.substr(ind + 1, (line.length() - ind - 1));
-    }
-    auto rIndex = line.find('\r');
-    if (rIndex != std::string::npos) {
-        line.erase(line.begin() + rIndex);
-    }
-    auto nIndex = line.find('\n');
-    if (nIndex != std::string::npos) {
-        line.erase(line.begin() + nIndex);
-    }
+    WSDONUtility::removeFromString(line, "\t");
+    WSDONUtility::removeFromString(line, "\r");
+    WSDONUtility::removeFromString(line, "\t");
     return line;
 }
 

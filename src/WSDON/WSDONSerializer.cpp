@@ -11,19 +11,21 @@ std::string WSDONSerializer::serialize(structure::WSDONDocument doc) {
 
 std::string WSDONSerializer::serializeObject(structure::WSDONObject object, unsigned int objectDepth) {
     std::string result;
-    auto indent = getIndentation(objectDepth);
+    auto indent = std::string("");
     auto currentObject = object.getObject();
     for (auto iter = currentObject->begin(); iter != currentObject->end(); ++iter) {
+        if (objectDepth != 0) {
+            indent = getIndentation(objectDepth);
+        }
         result += indent;
         result += getTitle(iter->first);
+        indent = getIndentation(objectDepth);
         auto objectType = iter->second.getType();
-        if (objectType == structure::WSDONObject::WSDONObjectType::Object){
+        if (objectType == structure::WSDONObject::WSDONObjectType::Object) {
             result += serializeObject(iter->second, objectDepth + 1);
-        }
-        else if (objectType == structure::WSDONObject::WSDONObjectType::Array){
+        } else if (objectType == structure::WSDONObject::WSDONObjectType::Array) {
             result += serializeArray(iter->second.getArray(), objectDepth + 1);
-        }
-        else if (objectType == structure::WSDONObject::WSDONObjectType::Basic){
+        } else if (objectType == structure::WSDONObject::WSDONObjectType::Basic) {
             result += indent;
             result += WSDONUtility::WSDONEscape(iter->second.getBasic());
         }
@@ -50,7 +52,7 @@ std::string WSDONSerializer::serializeArray(std::shared_ptr<std::vector<std::str
     result += indent;
     result += "(array)";
     auto innerIndent = indent + '\t';
-    for (const auto item : *array){
+    for (const auto item : *array) {
         result += innerIndent;
         result += WSDONUtility::WSDONEscape(item);
     }

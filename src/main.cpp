@@ -1,7 +1,7 @@
 #include <iostream>
 #include "WSDON/WSDONSerializer.h"
-#include "DocumentManagement/Docuemnts/CommonUtility/DocumentUtility.h"
-#include "DocumentManagement/Docuemnts/Data/DataDocumentManager.h"
+#include "DocumentManagement/Documents/CommonUtility/DocumentUtility.h"
+#include "DocumentManagement/Documents/Data/DataDocumentManager.h"
 
 int main() {
     DocumentUtility::initialise();
