@@ -18,6 +18,12 @@ int main() {
     (*map)["myObject"].setObject(map2);
     (*map)["back"] = structure::WSDONObject();
     (*map)["back"].setBasic("apples back");
+    (*map)["myArr"] = structure::WSDONObject();
+    auto arr = std::make_shared<std::vector<std::string>>();
+    for (auto i = 0; i < 10; i++) {
+        arr->push_back("hola" + std::to_string(i));
+    }
+    (*map)["myArr"].setArray(arr);
     obj.object->setObject(map);
 
 

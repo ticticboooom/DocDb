@@ -45,10 +45,11 @@ WSDONParser::parseObject(std::shared_ptr<std::vector<std::string>> lines) {
                 }
             } else {
                 if (std::regex_search(line, matchResult, arrayKeyRegex)) {
-                    auto currentObjectEnd = getEndOfObject(lines, i, lastTabIndex + 1);
+                    auto currentObjectEnd = getEndOfObject(lines, i  + 1, lastTabIndex + 1);
                     auto subLines = std::make_shared<std::vector<std::string>>();
-                    subLines->insert(subLines->begin(), lines->begin() + i, lines->end() + currentObjectEnd);
+                    subLines->insert(subLines->begin(), lines->begin() + i, lines->begin() + currentObjectEnd);
                     (*object)[currentKey].setArray(parseArray(subLines));
+                    i = currentObjectEnd - 1;
                 } else {
                     (*object)[currentKey].setBasic(WSDONUtility::WSDONUnEscape(cleanLine(line)));
                 }

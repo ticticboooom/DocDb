@@ -24,7 +24,7 @@ std::string WSDONSerializer::serializeObject(structure::WSDONObject object, unsi
         if (objectType == structure::WSDONObject::WSDONObjectType::Object) {
             result += serializeObject(iter->second, objectDepth + 1);
         } else if (objectType == structure::WSDONObject::WSDONObjectType::Array) {
-            result += serializeArray(iter->second.getArray(), objectDepth + 1);
+            result += serializeArray(iter->second.getArray(), objectDepth);
         } else if (objectType == structure::WSDONObject::WSDONObjectType::Basic) {
             result += indent;
             result += WSDONUtility::WSDONEscape(iter->second.getBasic());
