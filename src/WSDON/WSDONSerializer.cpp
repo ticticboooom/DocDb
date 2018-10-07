@@ -6,29 +6,20 @@
 #include "WSDONUtility.h"
 
 std::string WSDONSerializer::serialize(structure::WSDONDocument doc) {
-    return serializeObject(*doc.object, 0);
+    return serializeSubObject(doc.object->getObject(), 0);
 }
 
-std::string WSDONSerializer::serializeObject(structure::WSDONObject object, unsigned int objectDepth) {
+std::string WSDONSerializer::serializeObject(structure::WSDONObject object, unsigned int objectDepth, bool toIndentObject) {
     std::string result;
-    auto indent = std::string("");
-    auto currentObject = object.getObject();
-    for (auto iter = currentObject->begin(); iter != currentObject->end(); ++iter) {
-        if (objectDepth != 0) {
-            indent = getIndentation(objectDepth);
-        }
+    auto objectType = object.getType();
+    if (objectType == structure::WSDONObject::WSDONObjectType::Object) {
+        result += serializeSubObject(object.getObject(), toIndentObject == true ? objectDepth + 1 : objectDepth);
+    } else if (objectType == structure::WSDONObject::WSDONObjectType::Array) {
+        result += serializeArray(object.getArray(), objectDepth + 1);
+    } else if (objectType == structure::WSDONObject::WSDONObjectType::Basic) {
+        auto indent = getIndentation(toIndentObject == true ? objectDepth + 1 : objectDepth);
         result += indent;
-        result += getTitle(iter->first);
-        indent = getIndentation(objectDepth);
-        auto objectType = iter->second.getType();
-        if (objectType == structure::WSDONObject::WSDONObjectType::Object) {
-            result += serializeObject(iter->second, objectDepth + 1);
-        } else if (objectType == structure::WSDONObject::WSDONObjectType::Array) {
-            result += serializeArray(iter->second.getArray(), objectDepth);
-        } else if (objectType == structure::WSDONObject::WSDONObjectType::Basic) {
-            result += indent;
-            result += WSDONUtility::WSDONEscape(iter->second.getBasic());
-        }
+        result += WSDONUtility::WSDONEscape(object.getBasic());
     }
     return result;
 }
@@ -46,15 +37,31 @@ std::string WSDONSerializer::getTitle(std::string name) {
     return "[" + name + "]";
 }
 
-std::string WSDONSerializer::serializeArray(std::shared_ptr<std::vector<std::string>> array, unsigned int objectDepth) {
+std::string
+WSDONSerializer::serializeArray(std::shared_ptr<std::vector<structure::WSDONObject>> array, unsigned int objectDepth) {
     std::string result;
     auto indent = getIndentation(objectDepth);
     result += indent;
     result += "(array)";
-    auto innerIndent = indent + '\t';
     for (const auto item : *array) {
-        result += innerIndent;
-        result += WSDONUtility::WSDONEscape(item);
+        result += serializeObject(item, objectDepth + 1, false);
     }
+    return result;
+}
+
+std::string WSDONSerializer::serializeSubObject(std::shared_ptr<structure::WSDONObject::object_type> object,
+                                                unsigned int objectDepth) {
+    std::string result;
+    auto indent = std::string("");
+    for (auto iter = object->begin(); iter != object->end(); ++iter) {
+        if (objectDepth != 0) {
+            indent = getIndentation(objectDepth);
+        }
+        result += indent;
+        result += getTitle(iter->first);
+        indent = getIndentation(objectDepth);
+        result += serializeObject(iter->second, objectDepth, true);
+    }
+
     return result;
 }
