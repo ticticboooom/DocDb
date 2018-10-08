@@ -5,6 +5,9 @@
 #include "FileReader.h"
 
 std::string FileReader::readContents() {
+    if (!stream.is_open()){
+        return "";
+    }
     std::string data;
     auto line = std::string();
     while (getline(stream, line)) {

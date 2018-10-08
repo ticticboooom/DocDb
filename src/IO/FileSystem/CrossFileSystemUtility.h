@@ -10,8 +10,12 @@
 
 class CrossFileSystemUtility {
 public:
-    static void createDirectory(std::string path);
+    static bool createDirectory(std::string path);
     static bool directoryExists(std::string  path);
+    static std::string getCurrentWorkingDirectory();
+private:
+    static bool createSubDirectory(std::string path);
+    static bool createAllDirectory(std::string path);
 };
 
 

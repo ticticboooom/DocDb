@@ -4,10 +4,16 @@
 
 #include "DocumentUtility.h"
 #include "../../../IO/FileSystem/CrossFileSystemUtility.h"
+#include "../Data/DataDocumentManager.h"
+#include "../../../IO/FileReader.h"
+#include "../../../WSDON/WSDONParser.h"
 
-std::string DocumentUtility::rootDirectory = "";
-std::string DocumentUtility::tableDirectory = "";
-const std::string DocumentUtility::fileExtension = ".wsdon";
+
+
+std::string DocumentUtility::rootDirectory;
+std::string DocumentUtility::tableDirectory;
+std::string DocumentUtility::fileExtension;
+
 std::string DocumentUtility::generatePath(std::shared_ptr<structure::DataDocument> doc) {
     std::string path;
     path += getSegment(rootDirectory);
@@ -20,11 +26,14 @@ std::string DocumentUtility::generatePath(std::shared_ptr<structure::DataDocumen
 }
 
 void DocumentUtility::initialise() {
-    //TODO make configurable
-    rootDirectory = "C:\\DocDB_DataDirectory";
-    tableDirectory = "Tables";
-
-    CrossFileSystemUtility::createDirectory(rootDirectory + "\\" + tableDirectory);
+    auto currentDir = CrossFileSystemUtility::getCurrentWorkingDirectory();
+    const auto configPath =  currentDir + "/docdb.config.wsdon";
+    auto configDocument = readParseDocument(configPath);
+    auto obj = configDocument->object->getObject();
+    rootDirectory = (*obj)["RootDirectory"].getBasic();
+    tableDirectory = (*obj)["TableDirectory"].getBasic();
+    fileExtension = (*obj)["FileExtension"].getBasic();
+    CrossFileSystemUtility::createDirectory(rootDirectory + "/" + tableDirectory);
 }
 
 std::string DocumentUtility::generatePath(std::shared_ptr<structure::DocumentMetaData> doc) {
@@ -33,11 +42,25 @@ std::string DocumentUtility::generatePath(std::shared_ptr<structure::DocumentMet
     path += getSegment(tableDirectory);
     path += getSegment(doc->tableIdentifier);
     path += doc->primaryIndexValue;
-    path+= fileExtension;
+    path += fileExtension;
     return path;
 }
 
 std::string DocumentUtility::getSegment(std::string segment) {
-    return segment + "\\";
+    if (segment == "/" || segment.empty()){
+        return segment;
+    }
+    if (segment[segment.length() - 1] != '/') {
+        return segment + "/";
+    }
+    return segment;
+}
+
+std::shared_ptr<structure::WSDONDocument> DocumentUtility::readParseDocument(std::string path) {
+    auto fileReader = std::make_shared<FileReader>(path);
+    auto fileContents = fileReader->readContents();
+    auto document = WSDONParser::parse(fileContents);
+    auto documentPtr = std::make_shared<structure::WSDONDocument>(document);
+    return documentPtr;
 }
 

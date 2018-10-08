@@ -12,16 +12,16 @@
 
 class DocumentUtility {
 public:
-    DocumentUtility(const std::string &fileExtension);
 
     static void initialise();
     static std::string generatePath(std::shared_ptr<structure::DataDocument> doc);
     static std::string generatePath(std::shared_ptr<structure::DocumentMetaData> doc);
+    static std::shared_ptr<structure::WSDONDocument>  readParseDocument(std::string path);
 private:
     static std::string getSegment(std::string segment);
     static std::string rootDirectory;
     static std::string tableDirectory;
-    const static std::string fileExtension;
+    static std::string fileExtension;
 };
 
 
