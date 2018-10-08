@@ -11,9 +11,6 @@
 
 class DataDocumentManager {
 public:
-    DataDocumentManager();
-    ~DataDocumentManager();
-
     void writeDocument(std::shared_ptr<structure::DataDocument> document);
     std::shared_ptr<structure::DataDocument> readDocument(std::shared_ptr<structure::DocumentMetaData> metaData);
 };
