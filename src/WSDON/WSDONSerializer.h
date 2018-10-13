@@ -14,7 +14,7 @@
 
 class WSDONSerializer {
 public:
-    static std::string serialize(structure::WSDONDocument doc);
+    static std::string serialize(std::shared_ptr<structure::WSDONDocument> doc);
 private:
     static std::string serializeObject(structure::WSDONObject object, unsigned int objectDepth, bool toIndentObject);
     static std::string serializeSubObject(std::shared_ptr<structure::WSDONObject::object_type> object, unsigned int objectDepth);

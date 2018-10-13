@@ -8,15 +8,13 @@
 #include "../../../WSDON/WSDONSerializer.h"
 #include "../../../IO/FileReader.h"
 #include "../../../WSDON/WSDONParser.h"
+#include "../Indexing/IndexDocumentManager.h"
 
 void DataDocumentManager::writeDocument(std::shared_ptr<structure::DataDocument> document) {
     auto path = DocumentUtility::generatePath(document);
+    auto indexManager = std::make_unique<IndexDocumentManager>();
 
-    auto fw = std::make_shared<FileWriter>(path);
-    auto str = WSDONSerializer::serialize(document->documentData);
-    fw->writeString(str);
-
-
+    DocumentUtility::writeSerializeDocument(document->documentData, path);
 }
 
 std::shared_ptr<structure::DataDocument> DataDocumentManager::readDocument(std::shared_ptr<structure::DocumentMetaData> metaData) {
@@ -24,7 +22,7 @@ std::shared_ptr<structure::DataDocument> DataDocumentManager::readDocument(std::
     auto object = DocumentUtility::readParseDocument(path);
 
     auto document = std::make_shared<structure::DataDocument>();
-    document->documentData = *object;
+    document->documentData = object;
     document->primaryIndexValue = metaData->primaryIndexValue;
     document->tableIdentifier  = metaData->tableIdentifier;
     return document;

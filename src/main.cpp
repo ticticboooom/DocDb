@@ -5,8 +5,8 @@
 
 int main() {
     DocumentUtility::initialise();
-    auto obj = structure::WSDONDocument();
-    obj.object = std::make_shared<structure::WSDONObject>();
+    auto obj = std::make_shared<structure::WSDONDocument>();
+    obj->object = std::make_shared<structure::WSDONObject>();
     auto map = std::make_shared<structure::WSDONObject::object_type>();
     (*map)["id"] = structure::WSDONObject();
 
@@ -33,7 +33,7 @@ int main() {
         arr->push_back(item);
     }
     (*map)["myArr"].setArray(arr);
-    obj.object->setObject(map);
+    obj->object->setObject(map);
 
 
     auto dDoc = std::make_shared<structure::DocumentMetaData>();

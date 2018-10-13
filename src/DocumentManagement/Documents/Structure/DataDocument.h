@@ -13,7 +13,7 @@ namespace structure{
         std::string tableIdentifier;
         std::string primaryIndexIdentifier;
         std::string primaryIndexValue;
-        structure::WSDONDocument documentData;
+        std::shared_ptr<structure::WSDONDocument> documentData;
     };
 }
 #endif //DOCDB_DATADOCUMENT_H
