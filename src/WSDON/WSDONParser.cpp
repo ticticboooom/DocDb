@@ -40,7 +40,7 @@ WSDONParser::parseObject(std::shared_ptr<std::vector<std::string>> lines) {
                 currentKey = matchResult.str().substr(1, matchResult.length() - 2);
 
                 if (lastTabIndex < nextLastTabIndex && std::regex_search((*lines)[i + 1
-                ], matchResult, nameRegex)) {
+                                                                         ], matchResult, nameRegex)) {
                     auto currentObjectEnd = getEndOfObject(lines, i + 1, nextLastTabIndex);
                     auto subLines = std::make_shared<std::vector<std::string>>(lines->begin() + i + 1,
                                                                                lines->begin() + currentObjectEnd + 1);
@@ -71,7 +71,7 @@ WSDONParser::parseObject(std::shared_ptr<std::vector<std::string>> lines) {
 std::shared_ptr<std::vector<structure::WSDONObject>>
 WSDONParser::parseArray(std::shared_ptr<std::vector<std::string>> lines) {
     auto arr = std::make_shared<std::vector<structure::WSDONObject>>();
-    for (auto i = 1; i < lines->size(); i++) {
+    for (auto i = 2; i < lines->size(); i++) {
         auto line = (*lines)[i];
         auto lastTabIndex = getTabIndex((*lines)[i]);
         auto currentObjectEnd = getEndOfObject(lines, i + 1, lastTabIndex + 1);
@@ -81,7 +81,7 @@ WSDONParser::parseArray(std::shared_ptr<std::vector<std::string>> lines) {
         auto subLines = std::make_shared<std::vector<std::string>>(lines->begin() + i,
                                                                    lines->begin() + currentObjectEnd);
         arr->push_back(*parseObject(subLines));
-        i = currentObjectEnd - 1;
+        i = currentObjectEnd;
     }
     return arr;
 }

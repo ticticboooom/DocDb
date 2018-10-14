@@ -9,6 +9,7 @@
 #include "../Structure/IndexDocument.h"
 #include "../Structure/IndexDocumentMetaData.h"
 #include "../../../WSDON/Structure/WSDONDocument.h"
+#include "../../../Tables/Structure/TableInitData.h"
 
 class IndexDocumentManager {
 public:
