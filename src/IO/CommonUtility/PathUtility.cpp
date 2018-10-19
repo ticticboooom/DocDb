@@ -100,7 +100,7 @@ std::string PathUtility::generatePath(std::shared_ptr<structure::IndexSignatureD
     return path;
 }
 
-std::string PathUtility::generateIndexPath(std::shared_ptr<structure::tables::TableInitData> data) {
+std::string PathUtility::generatePath(std::shared_ptr<structure::tables::TableInitData> data) {
     auto path = generateBasePath();
     path += getSegment(tableDirectory);
     path += getSegment(data->name);

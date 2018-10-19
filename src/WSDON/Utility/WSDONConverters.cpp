@@ -6,14 +6,14 @@
 
 std::shared_ptr<structure::WSDONObject>
 WSDONConverters::ToWSDONObject(std::shared_ptr<structure::IndexDocument> indexDocument) {
-    auto object = std::make_shared<structure::WSDONObject>();
+    auto object = std::make_shared<structure::WSDONObject::object_type>();
     auto wsdonArray = std::make_shared<std::vector<structure::WSDONObject>>();
-    if (indexDocument->indices.size() != 0){
+    if (indexDocument->indices.size() != 0) {
         wsdonArray->reserve(indexDocument->indices.size());
     }
     for (auto &index : indexDocument->indices) {
         auto object = structure::WSDONObject();
-        auto map = std::shared_ptr<structure::WSDONObject::object_type>();
+        auto map = std::make_shared<structure::WSDONObject::object_type>();
         (*map)["IndexColumnName"] = structure::WSDONObject();
         (*map)["IndexColumnName"].setBasic(index.indexColumnName);
         (*map)["IndexColumnValue"] = structure::WSDONObject();
@@ -21,8 +21,12 @@ WSDONConverters::ToWSDONObject(std::shared_ptr<structure::IndexDocument> indexDo
         object.setObject(map);
         wsdonArray->push_back(object);
     }
-    object->setArray(wsdonArray);
-    return object;
+    (*object)["indices"] = structure::WSDONObject();
+    (*object)["indices"].setArray(wsdonArray);
+
+    auto root = std::make_shared<structure::WSDONObject>();
+    root->setObject(object);
+    return root;
 }
 
 std::shared_ptr<structure::WSDONObject>
@@ -55,10 +59,11 @@ WSDONConverters::ToWSDONObject(std::shared_ptr<structure::IndexSignatureDocument
 
 std::shared_ptr<structure::IndexDocument>
 WSDONConverters::ToIndexDocument(std::shared_ptr<structure::WSDONObject> wsdonObject) {
-    auto type = wsdonObject->getType();
     auto indexDocument = std::make_shared<structure::IndexDocument>();
+    auto wsdonArrayObject = std::make_shared<structure::WSDONObject>((*wsdonObject->getObject())["indices"]);
+    auto type = wsdonArrayObject->getType();
     if (type == structure::WSDONObject::Array) {
-        auto array = wsdonObject->getArray();
+        auto array = wsdonArrayObject->getArray();
         for (auto i = 0; i < array->size(); i++) {
             auto currentWsdonObject = (*array)[i];
             auto indexEntry = structure::IndexDocumentEntry();
@@ -76,7 +81,7 @@ WSDONConverters::ToIndexDocument(std::shared_ptr<structure::WSDONObject> wsdonOb
 std::shared_ptr<structure::IndexSignatureDocument>
 WSDONConverters::ToIndexSignatureDocument(std::shared_ptr<structure::WSDONObject> wsdonObject) {
     auto type = wsdonObject->getType();
-    if (type != structure::WSDONObject::Object){
+    if (type != structure::WSDONObject::Object) {
         return nullptr;
     }
     auto indexSignatureDocument = std::make_shared<structure::IndexSignatureDocument>();
@@ -84,15 +89,15 @@ WSDONConverters::ToIndexSignatureDocument(std::shared_ptr<structure::WSDONObject
     auto signatures = (*object)["IndexSignatures"];
     indexSignatureDocument->tableName = (*object)["TableName"].getBasic();
     indexSignatureDocument->indexSignatures = std::vector<structure::IndexSignature>();
-    if (signatures.getType() == structure::WSDONObject::Array){
+    if (signatures.getType() == structure::WSDONObject::Array) {
         auto arr = signatures.getArray();
         indexSignatureDocument->indexSignatures.reserve(arr->size());
-        for (const auto& item : *arr){
-            if (item.getType() == structure::WSDONObject::Object){
+        for (const auto &item : *arr) {
+            if (item.getType() == structure::WSDONObject::Object) {
                 auto currentSigObject = item.getObject();
                 auto indexSignature = structure::IndexSignature();
-                indexSignature.indexColumnPath = (*currentSigObject)["IndexColumnPath"].getBasic();
                 indexSignature.indexColumnName = (*currentSigObject)["IndexColumnName"].getBasic();
+                indexSignature.indexColumnPath = (*currentSigObject)["IndexColumnPath"].getBasic();
                 indexSignatureDocument->indexSignatures.push_back(indexSignature);
             }
         }

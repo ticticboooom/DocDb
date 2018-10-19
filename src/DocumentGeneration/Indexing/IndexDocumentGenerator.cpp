@@ -6,21 +6,20 @@
 #include "../../WSDON/Utility/WSDONObjectUtility.h"
 
 
-std::shared_ptr<structure::IndexDocument>
-IndexDocumentGenerator::generateIndexDocument(std::shared_ptr<structure::DataDocument> doc) {
+std::shared_ptr<structure::IndexDocumentEntry>
+IndexDocumentGenerator::generateIndexDocumentEntry(std::shared_ptr<structure::DataDocument> doc, std::string indexColumnPath) {
     auto sigDocMeta = std::make_shared<structure::IndexSignatureDocumentMetaData>();
     sigDocMeta->tableName = doc->tableIdentifier;
     auto sigDoc = signatureManager->readDocument(sigDocMeta);
-    auto indexDocument = std::make_shared<structure::IndexDocument>();
-    indexDocument->indices = std::vector<structure::IndexDocumentEntry>();
     for (const auto& item : sigDoc->indexSignatures){
-        auto indexEntry = std::make_unique<structure::IndexDocumentEntry>();
-        indexEntry->indexColumnName = item.indexColumnName;
-        indexEntry->indexColumnValue = FindByColumnIdentifier(doc->documentData->object, item.indexColumnPath);
-        indexDocument->indices.push_back(*indexEntry);
+        if (item.indexColumnPath == indexColumnPath){
+            auto indexEntry = std::make_unique<structure::IndexDocumentEntry>();
+            indexEntry->indexColumnName = item.indexColumnName;
+            indexEntry->indexColumnValue = FindByColumnIdentifier(doc->documentData->object, item.indexColumnPath);
+            return indexEntry;
+        }
     }
-    indexDocument->tableName = doc->tableIdentifier;
-    return indexDocument;
+    return {};
 }
 
 std::string

@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <regex>
+#include <lastlog.h>
 #include "WSDONParser.h"
 #include "WSDONUtility.h"
 
@@ -41,9 +42,9 @@ WSDONParser::parseObject(std::shared_ptr<std::vector<std::string>> lines) {
 
                 if (lastTabIndex < nextLastTabIndex && std::regex_search((*lines)[i + 1
                                                                          ], matchResult, nameRegex)) {
-                    auto currentObjectEnd = getEndOfObject(lines, i + 1, nextLastTabIndex);
+                    auto currentObjectEnd = getEndOfObject(lines, i + 1, lastTabIndex);
                     auto subLines = std::make_shared<std::vector<std::string>>(lines->begin() + i + 1,
-                                                                               lines->begin() + currentObjectEnd + 1);
+                                                                               lines->begin() + currentObjectEnd);
 
                     (*subObject)[currentKey].setObject(parseObject(subLines)->getObject());
                     i = currentObjectEnd;
@@ -74,14 +75,21 @@ WSDONParser::parseArray(std::shared_ptr<std::vector<std::string>> lines) {
     for (auto i = 2; i < lines->size(); i++) {
         auto line = (*lines)[i];
         auto lastTabIndex = getTabIndex((*lines)[i]);
-        auto currentObjectEnd = getEndOfObject(lines, i + 1, lastTabIndex + 1);
+        auto currentObjectEnd = getEndOfObject(lines, i + 1, lastTabIndex);
+        if (lastTabIndex == getTabIndex((*lines)[1])) {
+            i ++;
+        }
+
         if (currentObjectEnd == i) {
             currentObjectEnd++;
         }
         auto subLines = std::make_shared<std::vector<std::string>>(lines->begin() + i,
                                                                    lines->begin() + currentObjectEnd);
         arr->push_back(*parseObject(subLines));
-        i = currentObjectEnd;
+        if (currentObjectEnd == lines->size() - 1) {
+            break;
+        }
+        i = currentObjectEnd - 1;
     }
     return arr;
 }
@@ -113,7 +121,7 @@ unsigned int WSDONParser::getEndOfObject(std::shared_ptr<std::vector<std::string
         }
 
     }
-    return lines->size() - 1;
+    return lines->size();
 }
 
 std::string WSDONParser::cleanLine(std::string line) {

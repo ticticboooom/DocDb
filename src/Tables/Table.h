@@ -18,9 +18,11 @@ public:
     Table(std::shared_ptr<structure::tables::TableCreateData> createData);
     void create(std::shared_ptr<structure::tables::TableCreateData> createData);
     void init(std::shared_ptr<structure::tables::TableInitData> initData);
-    bool exists();
+    bool exists(std::shared_ptr<structure::tables::TableCreateData> createData);
+    void doStuff();
 private:
-    std::unique_ptr<std::map<std::string, std::shared_ptr<structure::IndexDocument>>> indexDocuments;
+    void writeIndexDocument(std::string key);
+    std::shared_ptr<std::map<std::string, std::shared_ptr<structure::IndexDocument>>> indexDocuments;
     std::unique_ptr<DataDocumentManager> dataDocumentManager;
     std::string name;
 };

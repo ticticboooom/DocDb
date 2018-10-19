@@ -30,7 +30,7 @@ public:
     static void writeSerializeDocument(std::shared_ptr<structure::WSDONDocument> doc, std::string path);
 
     static std::string generateIndexPath(std::shared_ptr<structure::IndexDocumentMetaData> doc);
-    static std::string generateIndexPath(std::shared_ptr<structure::tables::TableInitData> data);
+    static std::string generatePath(std::shared_ptr<structure::tables::TableInitData> data);
 
     static std::string generateBasePath();
     static std::string getSegment(std::string segment);

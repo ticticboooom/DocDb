@@ -14,8 +14,8 @@
 class IndexDocumentGenerator {
 public:
     IndexDocumentGenerator();
-    std::shared_ptr<structure::IndexDocument>
-    generateIndexDocument(std::shared_ptr<structure::DataDocument> doc);
+    std::shared_ptr<structure::IndexDocumentEntry>
+    generateIndexDocumentEntry(std::shared_ptr<structure::DataDocument> doc, std::string indexColumnPath);
 
 private:
     static std::string FindByColumnIdentifier(std::shared_ptr<structure::WSDONObject> object, std::string path);

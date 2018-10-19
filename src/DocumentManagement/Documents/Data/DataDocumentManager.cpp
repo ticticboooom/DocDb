@@ -11,12 +11,13 @@
 #include "../../../DocumentGeneration/Indexing/IndexDocumentGenerator.h"
 #include "../../../IO/CommonUtility/PathUtility.h"
 
-void DataDocumentManager::writeDocument(std::shared_ptr<structure::DataDocument> document) {
+void DataDocumentManager::writeDocument(std::shared_ptr<structure::DataDocument> document, std::shared_ptr<std::map<std::string, std::shared_ptr<structure::IndexDocument>>> indexDocuments) {
     auto path = PathUtility::generatePath(document);
-    auto indexManager = std::make_unique<IndexDocumentManager>();
     auto indexGenerator = std::make_unique<IndexDocumentGenerator>();
-    auto indexDocument = indexGenerator->generateIndexDocument(document);
-    indexManager->writeDocument(indexDocument);
+    for (const auto&  keyValue : *indexDocuments){
+        auto indexDocument = indexGenerator->generateIndexDocumentEntry(document, keyValue.first);
+        (*indexDocuments)[keyValue.first]->indices.push_back(*indexDocument);
+    }
 
 
     PathUtility::writeSerializeDocument(document->documentData, path);

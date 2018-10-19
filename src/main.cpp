@@ -12,7 +12,7 @@ int main() {
     createData->indices.push_back({"id", "id"});
     createData->name = "tings";
     auto table = std::make_unique<Table>(createData);
-
+    table->doStuff();
 
     return 0;
 }
