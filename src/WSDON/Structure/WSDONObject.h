@@ -16,9 +16,10 @@ namespace structure {
             Object = 1,
             Basic = 2
         };
-        typedef std::map<std::string, WSDONObject> object_type;
+        typedef std::map<std::string, std::shared_ptr<WSDONObject>> object_type;
+        typedef std::vector<std::shared_ptr<structure::WSDONObject>> array_type;
 
-        void setArray(std::shared_ptr<std::vector<structure::WSDONObject>> val) {
+        void setArray(std::shared_ptr<array_type> val) {
             array = val;
             type = WSDONObjectType::Array;
         }
@@ -35,15 +36,16 @@ namespace structure {
 
         std::string getBasic() const { return basic; };
 
-        std::shared_ptr<std::vector<structure::WSDONObject>> getArray() const { return array; }
+        std::shared_ptr<array_type> getArray() const { return array; }
 
         std::shared_ptr<object_type> getObject() const { return object; }
 
-        structure::WSDONObject::WSDONObjectType getType() const {return type;}
+        structure::WSDONObject::WSDONObjectType getType() const { return type; }
+
     private:
         WSDONObjectType type;
         std::string basic;
-        std::shared_ptr<std::vector<structure::WSDONObject>> array;
+        std::shared_ptr<array_type> array;
         std::shared_ptr<object_type> object;
     };
 }

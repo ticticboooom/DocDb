@@ -21,19 +21,19 @@ WSDON::WSDONFindObject(std::shared_ptr<structure::WSDONObject> root, std::string
         auto firstKeyEndIndex = path.find(':');
         if (firstKeyEndIndex != std::string::npos) {
             firstKey = std::string(path.begin(), path.begin() + firstKeyEndIndex);
-            auto pObject = std::make_shared<structure::WSDONObject>((*object)[firstKey]);
+            auto pObject = (*object)[firstKey];
             return WSDON::WSDONFindObject(pObject, path.substr(firstKeyEndIndex + 1, path.length() - 1));
         }
-        return std::make_shared<structure::WSDONObject>((*object)[firstKey]);
+        return (*object)[firstKey];
     } else if (objType == structure::WSDONObject::Basic) {
         return root;
     }
 }
 
 std::shared_ptr<structure::WSDONObject> WSDON::WSDONFindInArray(
-        std::shared_ptr<std::vector<structure::WSDONObject>> root, unsigned int index) {
+        std::shared_ptr<structure::WSDONObject::array_type> root, unsigned int index) {
     if (index > root->size() - 1) {
         return nullptr;
     }
-    return std::make_shared<structure::WSDONObject>(root->at(index));
+    return root->at(index);
 }

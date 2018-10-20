@@ -15,18 +15,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fc69bfa-ae76-4854-8452-e8c174ba4bb6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/WSDON/Structure/WSDONObjectDict.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DocumentGeneration/Indexing/IndexDocumentGenerator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/DocumentGeneration/Indexing/IndexDocumentGenerator.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DocumentGeneration/Indexing/IndexDocumentGenerator.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/DocumentGeneration/Indexing/IndexDocumentGenerator.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DocumentManagement/Documents/Data/DataDocumentManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/DocumentManagement/Documents/Data/DataDocumentManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DocumentManagement/Documents/Data/DataDocumentManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/DocumentManagement/Documents/Data/DataDocumentManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/IO/CommonUtility/PathUtility.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/IO/CommonUtility/PathUtility.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IO/CommonUtility/PathUtility.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/IO/CommonUtility/PathUtility.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tables/Table.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tables/Table.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tables/Table.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tables/Table.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WSDON/Structure/WSDONObject.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/WSDON/Structure/WSDONObject.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WSDON/Utility/WSDONConverters.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/WSDON/Utility/WSDONConverters.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WSDON/Utility/WSDONObjectUtility.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/WSDON/Utility/WSDONObjectUtility.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WSDON/Utility/WSDONObjectUtility.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/WSDON/Utility/WSDONObjectUtility.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WSDON/WSDONParser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/WSDON/WSDONParser.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WSDON/WSDONParser.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/WSDON/WSDONParser.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WSDON/WSDONSerializer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/WSDON/WSDONSerializer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WSDON/WSDONSerializer.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/WSDON/WSDONSerializer.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/src/cmake-build-debug/" />
@@ -100,20 +101,20 @@
     <session id="-1674093387">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="13" />
+          <entry key="project.closed" value="14" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.4" value="9" />
-          <entry key="project.open.time.5" value="3" />
+          <entry key="project.open.time.5" value="4" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="14" />
+          <entry key="project.opened" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="Build All (disassembly)" value="1" />
-          <entry key="DocDB (disassembly)" value="25" />
-          <entry key="cpp" value="137" />
-          <entry key="h" value="186" />
+          <entry key="DocDB (disassembly)" value="30" />
+          <entry key="cpp" value="154" />
+          <entry key="h" value="209" />
           <entry key="memory" value="1" />
           <entry key="new" value="1" />
           <entry key="tcc" value="6" />
@@ -126,15 +127,15 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CMakeLists.txt" value="3" />
-          <entry key="Disassembly" value="26" />
-          <entry key="ObjectiveC" value="333" />
+          <entry key="Disassembly" value="31" />
+          <entry key="ObjectiveC" value="373" />
           <entry key="PLAIN_TEXT" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="15545" />
-          <entry key="h" value="4189" />
+          <entry key="cpp" value="16374" />
+          <entry key="h" value="6938" />
           <entry key="mm" value="29" />
           <entry key="txt" value="410" />
           <entry key="wsdon" value="48" />
@@ -143,7 +144,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CMakeLists.txt" value="7" />
-          <entry key="ObjectiveC" value="19763" />
+          <entry key="ObjectiveC" value="23341" />
           <entry key="PLAIN_TEXT" value="451" />
         </counts>
       </usages-collector>
@@ -152,22 +153,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DocumentManagement/Documents/Indexing/IndexDocumentManager.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
-              <folding>
-                <element signature="e#39#72#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/WSDON/WSDONParser.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="74" selection-start-line="74" selection-end-line="74" />
+            <state relative-caret-position="-8">
+              <caret line="45" column="102" selection-start-line="45" selection-start-column="102" selection-end-line="45" selection-end-column="102" />
               <folding>
                 <element signature="e#41#61#0" expanded="true" />
               </folding>
@@ -176,21 +165,47 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/WSDON/Structure/WSDONObject.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
+              <folding>
+                <element signature="e#98#112#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/WSDON/WSDONSerializer.cpp">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file:///usr/include/c++/8/bits/stl_vector.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
+            <state relative-caret-position="143">
               <caret line="805" selection-start-line="805" selection-end-line="805" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DocumentManagement/Documents/Data/DataDocumentManager.cpp">
+        <entry file="file://$PROJECT_DIR$/src/IO/FileSystem/CrossFileSystemUtility.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="2" lean-forward="true" selection-start-column="2" selection-end-column="2" />
+            <state relative-caret-position="209">
+              <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/IO/CommonUtility/PathUtility.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="298">
+              <caret line="22" column="56" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
               <folding>
-                <element signature="e#41#73#0" expanded="true" />
+                <element signature="e#41#65#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -199,8 +214,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tables/Table.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="80" selection-start-line="80" selection-end-line="80" />
+            <state relative-caret-position="-5">
+              <caret line="46" column="59" selection-start-line="46" selection-start-column="59" selection-end-line="46" selection-end-column="59" />
               <folding>
                 <element signature="e#39#57#0" expanded="true" />
               </folding>
@@ -208,38 +223,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file:///usr/include/c++/7/bits/stl_vector.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="670" selection-start-line="670" selection-end-line="670" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/WSDON/Utility/WSDONConverters.cpp">
+        <entry file="file://$PROJECT_DIR$/src/WSDON/Structure/WSDONObjectDict.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="65" column="37" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
+            <state relative-caret-position="370">
+              <caret line="43" column="59" selection-start-line="43" selection-start-column="59" selection-end-line="43" selection-end-column="59" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DocumentManagement/Documents/Structure/IndexDocument.h">
+        <entry file="file:///usr/include/c++/8/bits/basic_string.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="16" column="7" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file:///usr/include/c++/7/bits/unique_ptr.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="811" lean-forward="true" selection-start-line="811" selection-end-line="811" />
+            <state relative-caret-position="143">
+              <caret line="6401" selection-start-line="6401" selection-end-line="6401" />
             </state>
           </provider>
         </entry>
@@ -254,10 +251,14 @@
       <find>subObject</find>
       <find>document</find>
       <find>array</find>
+      <find>object.</find>
+      <find>(*obj)</find>
     </findStrings>
     <replaceStrings>
       <replace>line</replace>
       <replace>(*subObject)</replace>
+      <replace>object-&gt;</replace>
+      <replace>obj</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -271,7 +272,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/DocumentManagement/Docuemnts/Structure/DataDocument.h" />
         <option value="$PROJECT_DIR$/src/IO/FileWriter.h" />
         <option value="$PROJECT_DIR$/src/DocumentManagement/Docuemnts/Structure/DocumentMetaData.h" />
         <option value="$PROJECT_DIR$/src/DocumentManagement/Docuemnts/Data/DataDocumentManager.h" />
@@ -281,20 +281,15 @@
         <option value="$PROJECT_DIR$/src/IO/FileWriter.cpp" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/DocumentManagement/Documents/Structure/DocumentIndex.h" />
-        <option value="$PROJECT_DIR$/src/WSDON/WSDONParser.h" />
         <option value="$PROJECT_DIR$/src/IO/FileReader.cpp" />
         <option value="$PROJECT_DIR$/src/IO/FileSystem/CrossFileSystemUtility.h" />
         <option value="$PROJECT_DIR$/src/IO/FileSystem/CrossFileSystemUtility.cpp" />
         <option value="$PROJECT_DIR$/src/DocumentManagement/Documents/Structure/IndexDocumentMetaData.h" />
         <option value="$PROJECT_DIR$/src/DocumentManagement/Documents/Structure/IndexDocument.h" />
-        <option value="$PROJECT_DIR$/src/WSDON/WSDONSerializer.h" />
         <option value="$PROJECT_DIR$/src/DocumentManagement/Documents/Structure/DataDocument.h" />
-        <option value="$PROJECT_DIR$/src/WSDON/Structure/WSDONObject.h" />
         <option value="$PROJECT_DIR$/src/WSDON/WSDONUtility.h" />
         <option value="$PROJECT_DIR$/src/WSDON_SDK/ObjectUtility/WSDONObjectUtility.h" />
         <option value="$PROJECT_DIR$/src/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/src/WSDON/Utility/WSDONObjectUtility.h" />
-        <option value="$PROJECT_DIR$/src/WSDON/Utility/WSDONObjectUtility.cpp" />
         <option value="$PROJECT_DIR$/docdb.config.wsdon" />
         <option value="$PROJECT_DIR$/src/WSDON/Utility/WSDONConverters.h" />
         <option value="$PROJECT_DIR$/src/DocumentManagement/Documents/CommonUtility/DocumentUtility.h" />
@@ -310,7 +305,6 @@
         <option value="$PROJECT_DIR$/src/DocumentManagement/Documents/Indexing/IndexDocumentManager.cpp" />
         <option value="$PROJECT_DIR$/src/Tables/Structure/TableCreateData.h" />
         <option value="$PROJECT_DIR$/src/DocumentManagement/Documents/Structure/IndexSignatureDocument.h" />
-        <option value="$PROJECT_DIR$/src/WSDON/WSDONSerializer.cpp" />
         <option value="$PROJECT_DIR$/src/DocumentGeneration/Indexing/IndexDocumentGenerator.h" />
         <option value="$PROJECT_DIR$/src/DocumentManagement/Documents/Data/DataDocumentManager.h" />
         <option value="$PROJECT_DIR$/src/main.cpp" />
@@ -318,10 +312,17 @@
         <option value="$PROJECT_DIR$/src/DocumentManagement/Documents/Data/DataDocumentManager.cpp" />
         <option value="$PROJECT_DIR$/src/Tables/Table.h" />
         <option value="$PROJECT_DIR$/src/IO/CommonUtility/PathUtility.h" />
+        <option value="$PROJECT_DIR$/src/WSDON/Structure/WSDONObject.h" />
+        <option value="$PROJECT_DIR$/src/WSDON/WSDONSerializer.h" />
         <option value="$PROJECT_DIR$/src/IO/CommonUtility/PathUtility.cpp" />
+        <option value="$PROJECT_DIR$/src/WSDON/WSDONSerializer.cpp" />
+        <option value="$PROJECT_DIR$/src/WSDON/Utility/WSDONObjectUtility.h" />
+        <option value="$PROJECT_DIR$/src/WSDON/Utility/WSDONObjectUtility.cpp" />
         <option value="$PROJECT_DIR$/src/Tables/Table.cpp" />
-        <option value="$PROJECT_DIR$/src/WSDON/WSDONParser.cpp" />
         <option value="$PROJECT_DIR$/src/WSDON/Utility/WSDONConverters.cpp" />
+        <option value="$PROJECT_DIR$/src/WSDON/WSDONParser.h" />
+        <option value="$PROJECT_DIR$/src/WSDON/WSDONParser.cpp" />
+        <option value="$PROJECT_DIR$/src/WSDON/Structure/WSDONObjectDict.h" />
       </list>
     </option>
   </component>
@@ -352,17 +353,6 @@
             <path>
               <item name="DocDB" type="b2602c69:ProjectViewProjectNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DocDB" type="b2602c69:ProjectViewProjectNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="DocumentGeneration" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DocDB" type="b2602c69:ProjectViewProjectNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="DocumentGeneration" type="462c0819:PsiDirectoryNode" />
-              <item name="Indexing" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DocDB" type="b2602c69:ProjectViewProjectNode" />
@@ -410,24 +400,24 @@
             <path>
               <item name="DocDB" type="b2602c69:ProjectViewProjectNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Tables" type="462c0819:PsiDirectoryNode" />
+              <item name="IO" type="462c0819:PsiDirectoryNode" />
+              <item name="FileSystem" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DocDB" type="b2602c69:ProjectViewProjectNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Tables" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DocDB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="WSDON" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DocDB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="WSDON" type="462c0819:PsiDirectoryNode" />
               <item name="Structure" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DocDB" type="b2602c69:ProjectViewProjectNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="WSDON" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DocDB" type="b2602c69:ProjectViewProjectNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="WSDON" type="462c0819:PsiDirectoryNode" />
-              <item name="Utility" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -518,6 +508,7 @@
       <workItem from="1539885569543" duration="1150000" />
       <workItem from="1539981165767" duration="9000" />
       <workItem from="1539981196476" duration="1228000" />
+      <workItem from="1540031640462" duration="5775000" />
     </task>
     <task id="LOCAL-00001" summary="Adding starting Files">
       <created>1538227787909</created>
@@ -586,7 +577,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99679000" />
+    <option name="totallyTimeSpent" value="105728000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -601,7 +592,7 @@
     <frame x="1920" y="0" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2053476" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20802139" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -613,8 +604,8 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32944915" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="8" sideWeight="0.49946696" weight="0.32941177" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.33050847" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50106955" side_tool="true" weight="0.39512712" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49893048" weight="0.3304813" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50106955" side_tool="true" weight="0.3304813" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32944915" />
       <window_info anchor="bottom" id="CMake" order="12" weight="0.32944915" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -661,81 +652,57 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/src/Tables/Table.cpp</url>
-          <line>80</line>
-          <option name="timeStamp" value="5" />
+          <line>84</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/IO/CommonUtility/PathUtility.cpp</url>
+          <line>8</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/src/Tables/Table.cpp</url>
-          <line>79</line>
-          <option name="timeStamp" value="6" />
+          <line>55</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/Tables/Table.cpp</url>
-          <line>22</line>
-          <option name="timeStamp" value="11" />
+          <url>file://$PROJECT_DIR$/src/IO/FileSystem/CrossFileSystemUtility.cpp</url>
+          <line>25</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/IO/CommonUtility/PathUtility.cpp</url>
+          <line>37</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/src/WSDON/WSDONParser.cpp</url>
-          <line>74</line>
-          <option name="timeStamp" value="12" />
+          <line>67</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/WSDON/WSDONParser.cpp</url>
+          <line>15</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/WSDON/WSDONParser.cpp</url>
+          <line>60</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/WSDON/Structure/WSDONObjectDict.h</url>
+          <line>28</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///usr/include/c++/7/tuple">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="1314" selection-start-line="1314" selection-end-line="1314" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/include/c++/7/bits/stl_pair.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="197" selection-start-line="197" selection-end-line="197" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/include/c++/7/bits/alloc_traits.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="486" selection-start-line="486" selection-end-line="486" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/include/c++/7/ext/new_allocator.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="124" selection-start-line="124" selection-end-line="124" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docdb.config.wsdon">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="1076" selection-start-line="5" selection-start-column="1076" selection-end-line="5" selection-end-column="1076" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/IO/FileReader.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IO/FileSystem/CrossFileSystemUtility.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -816,20 +783,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/WSDON/WSDONSerializer.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DocumentManagement/Documents/Data/DataDocumentManager.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="15" column="52" lean-forward="true" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/include/c++/7/bits/stl_iterator.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -844,34 +797,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/WSDON/WSDONParser.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WSDON/WSDONSerializer.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WSDON/Structure/WSDONObject.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="39" column="37" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WSDON/Utility/WSDONObjectUtility.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="138" selection-start-line="12" selection-start-column="138" selection-end-line="12" selection-end-column="138" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/WSDON/Utility/WSDONConverters.h">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -883,13 +808,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WSDON/Utility/WSDONObjectUtility.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -928,24 +846,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="21" lean-forward="true" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/IO/CommonUtility/PathUtility.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="31" column="27" lean-forward="true" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IO/CommonUtility/PathUtility.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1836">
-          <caret line="102" column="33" selection-start-line="102" selection-start-column="33" selection-end-line="102" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -980,23 +884,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/include/c++/7/bits/unique_ptr.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="811" lean-forward="true" selection-start-line="811" selection-end-line="811" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DocumentManagement/Documents/Data/DataDocumentManager.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="2" lean-forward="true" selection-start-column="2" selection-end-column="2" />
-          <folding>
-            <element signature="e#41#73#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DocumentManagement/Documents/Structure/IndexDocument.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -1006,52 +893,182 @@
     </entry>
     <entry file="file:///usr/include/c++/7/bits/stl_vector.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
+        <state relative-caret-position="12060">
           <caret line="670" selection-start-line="670" selection-end-line="670" />
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/include/c++/7/bits/unique_ptr.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14598">
+          <caret line="811" selection-start-line="811" selection-end-line="811" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WSDON/Structure/WSDONObjectDict.cpp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/DocumentManagement/Documents/Indexing/IndexDocumentManager.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
+        <state relative-caret-position="324">
           <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WSDON/Structure/WSDONDocument.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DocumentManagement/Documents/Structure/DataDocument.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DocumentManagement/Documents/Data/DataDocumentManager.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
           <folding>
-            <element signature="e#39#72#0" expanded="true" />
+            <element signature="e#115#153#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/DocumentManagement/Documents/Data/DataDocumentManager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="e#41#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WSDON/Utility/WSDONObjectUtility.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="73" selection-start-line="15" selection-start-column="73" selection-end-line="15" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WSDON/WSDONSerializer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="18" column="79" selection-start-line="18" selection-start-column="79" selection-end-line="18" selection-end-column="79" />
+          <folding>
+            <element signature="e#107#124#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WSDON/Utility/WSDONObjectUtility.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WSDON/Utility/WSDONConverters.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/8/ext/string_conversions.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WSDON/WSDONParser.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="16" column="63" selection-start-line="16" selection-start-column="63" selection-end-line="16" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/8/bits/basic_string.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="6401" selection-start-line="6401" selection-end-line="6401" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IO/FileSystem/CrossFileSystemUtility.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/8/bits/stl_vector.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="805" selection-start-line="805" selection-end-line="805" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WSDON/WSDONSerializer.cpp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Tables/Table.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="80" selection-start-line="80" selection-end-line="80" />
+        <state relative-caret-position="-5">
+          <caret line="46" column="59" selection-start-line="46" selection-start-column="59" selection-end-line="46" selection-end-column="59" />
           <folding>
             <element signature="e#39#57#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/WSDON/Structure/WSDONObject.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="e#98#112#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IO/CommonUtility/PathUtility.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="22" column="56" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
+          <folding>
+            <element signature="e#41#65#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/WSDON/WSDONParser.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="74" selection-start-line="74" selection-end-line="74" />
+        <state relative-caret-position="-8">
+          <caret line="45" column="102" selection-start-line="45" selection-start-column="102" selection-end-line="45" selection-end-column="102" />
           <folding>
             <element signature="e#41#61#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/include/c++/8/bits/stl_vector.h">
+    <entry file="file://$PROJECT_DIR$/src/WSDON/Structure/WSDONObjectDict.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="805" selection-start-line="805" selection-end-line="805" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WSDON/Utility/WSDONConverters.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="65" column="37" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
+        <state relative-caret-position="370">
+          <caret line="43" column="59" selection-start-line="43" selection-start-column="59" selection-end-line="43" selection-end-column="59" />
         </state>
       </provider>
     </entry>

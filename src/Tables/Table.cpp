@@ -8,6 +8,7 @@
 #include "../DocumentManagement/Documents/Indexing/IndexDocumentManager.h"
 #include "../DocumentManagement/Documents/Indexing/IndexSignatureDocumentManager.h"
 #include "../WSDON/Utility/WSDONConverters.h"
+#include "../WSDON/Structure/WSDONObjectDict.h"
 
 void Table::init(std::shared_ptr<structure::tables::TableInitData> initData) {
     auto indexSignatureManager = std::make_unique<IndexSignatureDocumentManager>();
@@ -49,36 +50,41 @@ void Table::create(std::shared_ptr<structure::tables::TableCreateData> createDat
     init(createData);
 }
 
-Table::Table(std::shared_ptr<structure::tables::TableCreateData> createData): name(createData->name) {
+Table::Table(std::shared_ptr<structure::tables::TableCreateData> createData) : name(createData->name) {
     indexDocuments = std::make_shared<std::map<std::string, std::shared_ptr<structure::IndexDocument>>>();
     dataDocumentManager = std::make_unique<DataDocumentManager>();
-    if (exists(createData)){
+    if (exists(createData)) {
         init(createData);
-    }
-    else {
+    } else {
         create(createData);
     }
 }
 
 bool Table::exists(std::shared_ptr<structure::tables::TableCreateData> createData) {
-     return CrossFileSystemUtility::directoryExists(PathUtility::generatePath(createData));
+    return CrossFileSystemUtility::directoryExists(PathUtility::generatePath(createData));
 }
 
 void Table::doStuff() {
     auto doc = std::make_shared<structure::DataDocument>();
     doc->tableIdentifier = name;
     doc->primaryIndexIdentifier = "id",
-    doc->primaryIndexValue = "2";
+            doc->primaryIndexValue = "2";
     doc->documentData = std::make_shared<structure::WSDONDocument>();
     doc->documentData->object = std::make_shared<structure::WSDONObject>();
-    auto obj = std::make_shared<structure::WSDONObject::object_type>();
-    (*obj)["id"] = structure::WSDONObject();
-    (*obj)["id"].setBasic("2");
-    (*obj)["name"] = structure::WSDONObject();
-    (*obj)["name"].setBasic("hola");
-    doc->documentData->object->setObject(obj);
+
+    auto obj = structure::WSDONObjectDict();
+    obj["id"] = "2";
+    obj["name"] = "hola";
+    doc->documentData->object = obj.object;
     dataDocumentManager->writeDocument(doc, indexDocuments);
     writeIndexDocument("id");
+    auto metaDoc = std::make_shared<structure::DocumentMetaData>();
+    metaDoc->tableIdentifier = name;
+    metaDoc->primaryIndexValue = "2";
+    auto data = dataDocumentManager->readDocument(metaDoc);
+    auto dict = structure::WSDONObjectDict(data->documentData->object);
+    auto id = dict["id"];
+    auto name = dict["name"];
 }
 
 void Table::writeIndexDocument(std::string key) {

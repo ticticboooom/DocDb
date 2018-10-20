@@ -6,20 +6,20 @@
 #include "WSDONUtility.h"
 
 std::string WSDONSerializer::serialize(std::shared_ptr<structure::WSDONDocument> doc) {
-    return serializeObject(*doc->object, 0, false);
+    return serializeObject(doc->object, 0, false);
 }
 
-std::string WSDONSerializer::serializeObject(structure::WSDONObject object, unsigned int objectDepth, bool toIndentObject) {
+std::string WSDONSerializer::serializeObject(std::shared_ptr<structure::WSDONObject> object, unsigned int objectDepth, bool toIndentObject) {
     std::string result;
-    auto objectType = object.getType();
+    auto objectType = object->getType();
     if (objectType == structure::WSDONObject::WSDONObjectType::Object) {
-        result += serializeSubObject(object.getObject(), toIndentObject ? objectDepth + 1 : objectDepth);
+        result += serializeSubObject(object->getObject(), toIndentObject ? objectDepth + 1 : objectDepth);
     } else if (objectType == structure::WSDONObject::WSDONObjectType::Array) {
-        result += serializeArray(object.getArray(), toIndentObject ? objectDepth + 1 : objectDepth);
+        result += serializeArray(object->getArray(), toIndentObject ? objectDepth + 1 : objectDepth);
     } else if (objectType == structure::WSDONObject::WSDONObjectType::Basic) {
         auto indent = getIndentation(toIndentObject ? objectDepth + 1 : objectDepth);
         result += indent;
-        result += WSDONUtility::WSDONEscape(object.getBasic());
+        result += WSDONUtility::WSDONEscape(object->getBasic());
     }
     return result;
 }
@@ -38,7 +38,7 @@ std::string WSDONSerializer::getTitle(std::string name) {
 }
 
 std::string
-WSDONSerializer::serializeArray(std::shared_ptr<std::vector<structure::WSDONObject>> array, unsigned int objectDepth) {
+WSDONSerializer::serializeArray(std::shared_ptr<structure::WSDONObject::array_type> array, unsigned int objectDepth) {
     std::string result;
     auto indent = getIndentation(objectDepth);
     result += indent;

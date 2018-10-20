@@ -9,6 +9,7 @@
 #include "../../WSDON/WSDONParser.h"
 #include "../FileWriter.h"
 #include "../../WSDON/WSDONSerializer.h"
+#include "../../WSDON/Structure/WSDONObjectDict.h"
 
 
 std::string PathUtility::rootDirectory;
@@ -33,14 +34,14 @@ void PathUtility::initialise() {
     auto currentDir = CrossFileSystemUtility::getCurrentWorkingDirectory();
     const auto configPath = currentDir + "/docdb.config.wsdon";
     auto configDocument = readParseDocument(configPath);
-    auto obj = configDocument->object->getObject();
-    rootDirectory = (*obj)["RootDirectory"].getBasic();
-    indexDirectory = (*obj)["IndexDirectory"].getBasic();
-    indexPrefix = (*obj)["IndexPrefix"].getBasic();
-    tableDirectory = (*obj)["TableDirectory"].getBasic();
-    fileExtension = (*obj)["FileExtension"].getBasic();
-    indexSignaturePrefix = (*obj)["IndexSignaturePrefix"].getBasic();
-    indexSignatureDirectory = (*obj)["IndexSignatureDirectory"].getBasic();
+    auto obj = structure::WSDONObjectDict(configDocument->object);
+    rootDirectory = obj["RootDirectory"].getBasic();
+    indexDirectory = obj["IndexDirectory"].getBasic();
+    indexPrefix = obj["IndexPrefix"].getBasic();
+    tableDirectory = obj["TableDirectory"].getBasic();
+    fileExtension = obj["FileExtension"].getBasic();
+    indexSignaturePrefix = obj["IndexSignaturePrefix"].getBasic();
+    indexSignatureDirectory = obj["IndexSignatureDirectory"].getBasic();
     CrossFileSystemUtility::createDirectory(getSegment(rootDirectory) + getSegment(tableDirectory));
     CrossFileSystemUtility::createDirectory(generateBasePath() + getSegment(indexSignatureDirectory));
 }
